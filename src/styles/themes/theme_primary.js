@@ -1,0 +1,26 @@
+export default {
+  primary: '#fff',
+  secondary: '#e22228',
+  dark: '#231f20',
+  light: '#969696',
+  lightPerfect: '#757575',
+  lightClear: '#c8c8c8',
+  platinum: '#e6e6e6',
+  success: '#4caf50',
+  warning: '#ecb200',
+  failure: '#e42227',
+  obscure: '#000000',
+  // dashboard
+  charscolors: {
+    technology: '#e4a427',
+    industries: '#61a1d9',
+    finances: '#74b764',
+    assets: '#804b28',
+    communication: '#d15678',
+    gas: '#7d657c',
+    material: '#b09069',
+    energy: '#cc6f34',
+    manatee: '#a0a0a0',
+    lightGray: '#d4d4d4',
+  },
+};
