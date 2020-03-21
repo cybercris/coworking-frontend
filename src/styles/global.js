@@ -20,13 +20,15 @@ body{
     -webkit-font-smoothing: antialiased !important;
 }
 
-body, input, button {
-    font-family: 'Roboto', sans-serif;
-    color: ${colors.lighter};
+body, input {
+    color: ${colors.light};
     font-size: 14px;
 }
 
 button{
+    color: ${colors.secondary};
+    font-size: 14px;
     cursor: pointer;
 }
+
 `;
