@@ -21,9 +21,9 @@ body{
 }
 
 body, input, button {
+    font-family: 'Roboto', sans-serif;
     color: ${colors.lighter};
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
 }
 
 button{
