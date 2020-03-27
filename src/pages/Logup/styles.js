@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors } from '~/styles/themes';
 
 import Input from '~/components/Input';
+import Button from '~/components/Button';
 
 export const Grid = styled.div`
   display: grid;
@@ -19,8 +20,8 @@ export const Form = styled.form`
   padding: 24px 28px;
 `;
 
-export const SInput = styled(Input)`
-  width: 14rem;
+export const InputData = styled(Input)`
+  width: ${props => (!props.big ? ' 14rem' : '100%')};
   height: 2.4rem;
   border: 0.5px solid;
   border-radius: 4px;
@@ -33,24 +34,18 @@ export const SInput = styled(Input)`
   }
 `;
 
-export const BInput = styled(Input)`
-  width: 100%;
-  height: 2.4rem;
-  border: 0.5px solid;
-  border-radius: 4px;
-  padding: 10px;
-
-  &::placeholder {
-    color: ${colors.lighter};
-    font-weight: 500;
-  }
-`;
-
-export const Logomarca = styled(Input)`
+export const InputFile = styled(Input)`
   width: 100%;
   height: 3.4rem;
   border: 0.5px dashed;
   border-radius: 4px;
   padding: 10px;
   text-align: center;
+`;
+
+export const SButton = styled(Button)`
+  height: 2.8rem;
+  background-color: ${colors.tertiary};
+  border: 0.5px;
+  border-radius: 4px;
 `;

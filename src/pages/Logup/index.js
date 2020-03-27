@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 
 import { Container, Box, Title, BButton } from '../Login/styles';
-import { Form, SInput, BInput, Logomarca, Grid } from './styles';
+import { Form, InputData, InputFile, Grid } from './styles';
 
 export default function Logup() {
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState('Logomarca');
 
   function handleFileChange(e) {
     console.log(e.target.files[0]);
     setFileName(e.target.files[0].name);
-    console.log('filename: ', fileName);
   }
 
   return (
@@ -17,7 +16,7 @@ export default function Logup() {
       <Box>
         <Title>Logup</Title>
         <Form>
-          <Logomarca
+          <InputFile
             type="file"
             name="logomarca"
             id="logomarca"
@@ -25,62 +24,73 @@ export default function Logup() {
             fileName={fileName}
           />
           <Grid>
-            <SInput
+            <InputData
               type="text"
               placeholder="Nome da empresa"
               name="companyName"
               id="companyName"
             />
-            <SInput
+            <InputData
               type="text"
               placeholder="Linkedin"
               name="linkedin"
               id="linkedin"
             />
-            <SInput type="email" placeholder="Email" name="email" id="email" />
-            <SInput
+            <InputData
+              type="email"
+              placeholder="Email"
+              name="email"
+              id="email"
+            />
+            <InputData
               type="password"
               placeholder="Senha"
               name="password"
               id="password"
             />
-            <SInput
+            <InputData
               type="text"
               placeholder="Latitude"
               name="latitude"
               id="latitude"
             />
-            <SInput
+            <InputData
               type="text"
               placeholder="Longitude"
               name="longitude"
               id="longitude"
             />
-            <SInput type="text" placeholder="Rua" name="street" id="street" />
-            <SInput
+            <InputData
+              type="text"
+              placeholder="Rua"
+              name="street"
+              id="street"
+            />
+            <InputData
               type="text"
               placeholder="Numero"
               name="number"
               id="number"
             />
-            <SInput
+            <InputData
               type="text"
               placeholder="Complemento"
               name="complement"
               id="complement"
             />
-            <SInput
+            <InputData
               type="text"
               placeholder="Telefone"
               name="phone"
               id="phone"
             />
           </Grid>
-          <BInput
+          <InputData
             type="text"
             placeholder="Tecnologias EX: Reactjs, Nodejs, ..."
             name="tech"
             id="tech"
+            big
           />
         </Form>
         <BButton type="submit" title="Entrar" />
