@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Container, Box, Title, BButton } from '../Login/styles';
-import { Form, InputData, InputFile, Grid } from './styles';
+import { Container, Box, Title } from '../Login/styles';
+import { Form, InputData, InputFile, Grid, SButton, Actions } from './styles';
 
 export default function Logup() {
   const [fileName, setFileName] = useState('Logomarca');
@@ -93,7 +93,10 @@ export default function Logup() {
             big
           />
         </Form>
-        <BButton type="submit" title="Entrar" />
+        <Actions>
+          <SButton type="submit" title="Cancelar" bgWhite />
+          <SButton type="submit" title="Entrar" />
+        </Actions>
       </Box>
     </Container>
   );

@@ -43,9 +43,19 @@ export const InputFile = styled(Input)`
   text-align: center;
 `;
 
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const SButton = styled(Button)`
+  width: 10rem;
   height: 2.8rem;
-  background-color: ${colors.tertiary};
-  border: 0.5px;
+  color: ${props => (!props.bgWhite ? colors.secondary : colors.lighter)};
+  background-color: ${props =>
+    !props.bgWhite ? colors.tertiary : colors.secondary};
+  border: ${props => (!props.bgWhite ? 0 : `1px solid ${colors.tertiary}`)};
   border-radius: 4px;
+  margin-right: ${props => (props.bgWhite ? '10px' : '0')};
+  margin-left: ${props => (!props.bgWhite ? '10px' : '0')};
 `;
