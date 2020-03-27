@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors } from '~/styles/themes';
 
 import Input from '~/components/Input';
+import Button from '~/components/Button';
 
 export const Grid = styled.div`
   display: grid;
@@ -19,8 +20,8 @@ export const Form = styled.form`
   padding: 24px 28px;
 `;
 
-export const SInput = styled(Input)`
-  width: 14rem;
+export const InputData = styled(Input)`
+  width: ${props => (!props.big ? ' 14rem' : '100%')};
   height: 2.4rem;
   border: 0.5px solid;
   border-radius: 4px;
@@ -33,24 +34,28 @@ export const SInput = styled(Input)`
   }
 `;
 
-export const BInput = styled(Input)`
-  width: 100%;
-  height: 2.4rem;
-  border: 0.5px solid;
-  border-radius: 4px;
-  padding: 10px;
-
-  &::placeholder {
-    color: ${colors.lighter};
-    font-weight: 500;
-  }
-`;
-
-export const Logomarca = styled(Input)`
+export const InputFile = styled(Input)`
   width: 100%;
   height: 3.4rem;
   border: 0.5px dashed;
   border-radius: 4px;
   padding: 10px;
   text-align: center;
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const SButton = styled(Button)`
+  width: 10rem;
+  height: 2.8rem;
+  color: ${props => (!props.bgWhite ? colors.secondary : colors.lighter)};
+  background-color: ${props =>
+    !props.bgWhite ? colors.tertiary : colors.secondary};
+  border: ${props => (!props.bgWhite ? 0 : `1px solid ${colors.tertiary}`)};
+  border-radius: 4px;
+  margin-right: ${props => (props.bgWhite ? '10px' : '0')};
+  margin-left: ${props => (!props.bgWhite ? '10px' : '0')};
 `;
