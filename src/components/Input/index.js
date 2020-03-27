@@ -1,15 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({ type, name, placeholder, ...rest }) {
+import { FileName, InputFile } from './styles';
+
+export default function Input({ type, name, placeholder, fileName, ...rest }) {
   return (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      // value={value}
-      {...rest}
-    />
+    <>
+      {type !== 'file' ? (
+        <input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          // value={value}
+          {...rest}
+        />
+      ) : (
+        <label {...rest}>
+          <InputFile type={type} name={name} />
+          <FileName>{fileName}</FileName>
+        </label>
+      )}
+    </>
   );
 }
 
@@ -18,9 +29,11 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   // value: PropTypes.string,
   placeholder: PropTypes.string,
+  fileName: PropTypes.string,
 };
 
 Input.defaultProps = {
   placeholder: '',
   // value: '',
+  fileName: '',
 };

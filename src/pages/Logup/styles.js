@@ -53,9 +53,4 @@ export const Logomarca = styled(Input)`
   border-radius: 4px;
   padding: 10px;
   text-align: center;
-
-  &::placeholder {
-    color: ${colors.lighter};
-    font-weight: 500;
-  }
 `;
