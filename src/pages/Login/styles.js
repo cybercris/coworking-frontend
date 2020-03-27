@@ -16,7 +16,7 @@ export const Box = styled.div`
   flex-direction: column;
   align-items: center;
   background: ${colors.secondary};
-  padding: 30px 20px 20px;
+  padding: 24px 20px 20px;
   border-radius: 4px;
   border: 1px solid ${colors.tertiary};
 `;
@@ -51,7 +51,7 @@ export const SInput = styled(Input)`
 
   &::placeholder {
     color: ${colors.lighter};
-    font-weight: 600;
+    font-weight: 500;
   }
 `;
 
