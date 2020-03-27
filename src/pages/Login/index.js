@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Box, Title, Form, Text } from './styles';
+import { Container, Box, Title, Form, Text, SInput, BButton } from './styles';
 
 export default function Login() {
   return (
@@ -8,9 +8,9 @@ export default function Login() {
       <Box>
         <Title>LOGIN</Title>
         <Form>
-          <input type="text" />
-          <input type="text" />
-          <button type="button">Entrar</button>
+          <SInput type="email" name="email" placeholder="Email" />
+          <SInput type="password" name="password" placeholder="Senha" />
+          <BButton type="submit" title="Entrar" />
         </Form>
         <Text>Cadastrar</Text>
       </Box>
