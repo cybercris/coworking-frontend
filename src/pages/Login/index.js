@@ -8,8 +8,13 @@ export default function Login() {
       <Box>
         <Title>LOGIN</Title>
         <Form>
-          <SInput type="email" name="email" placeholder="Email" />
-          <SInput type="password" name="password" placeholder="Senha" />
+          <SInput type="email" name="email" id="email" placeholder="Email" />
+          <SInput
+            type="password"
+            name="password"
+            id="paswword"
+            placeholder="Senha"
+          />
           <BButton type="submit" title="Entrar" />
         </Form>
         <Text>Cadastrar</Text>
