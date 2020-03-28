@@ -36,6 +36,11 @@ export default function Logup() {
     );
   }, []);
 
+  function handleFileChange(e) {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  }
+
   return (
     <Container>
       <Box>
@@ -45,7 +50,7 @@ export default function Logup() {
             type="file"
             name="logomarca"
             id="logomarca"
-            onChange={e => setFile(e.target.files[0])}
+            onChange={e => handleFileChange(e)}
             fileName={fileName}
           />
           <Grid>
