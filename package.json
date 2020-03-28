@@ -2,21 +2,11 @@
   "name": "coworking-frontend",
   "version": "0.1.0",
   "private": true,
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "aws-s3": "^2.0.5",
     "axios": "^0.19.1",
     "babel-plugin-root-import": "^6.4.1",
     "cross-env": "^7.0.0",

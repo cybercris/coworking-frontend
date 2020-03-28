@@ -2,10 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Button({ type, title, ...rest }) {
+import Loading from '../Loading';
+
+export default function Button({ type, title, loading, ...rest }) {
   return (
     <button type={type} {...rest}>
-      {title}
+      {loading ? <Loading size={30} color="#fff" /> : title}
     </button>
   );
 }
@@ -13,8 +15,10 @@ export default function Button({ type, title, ...rest }) {
 Button.propTypes = {
   type: PropTypes.string.isRequired,
   title: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 Button.defaultProps = {
   title: '',
+  loading: false,
 };

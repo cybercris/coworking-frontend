@@ -1,8 +1,13 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
+import S3 from 'aws-s3';
+import { toast } from 'react-toastify';
 
 import { Container, Box, Title } from '../Login/styles';
 import { Form, InputData, InputFile, Grid, SButton, Actions } from './styles';
+import history from '../../services/history';
+import api from '../../services/api';
+import { AWS_CONFIG } from '../../config/awsConfig';
 
 export default function Logup() {
   const [fileName, setFileName] = useState('Logomarca');
@@ -18,6 +23,7 @@ export default function Logup() {
   const [complement, setComplement] = useState('');
   const [phone, setPhone] = useState('');
   const [techs, setTechs] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -27,7 +33,7 @@ export default function Logup() {
         setLatitude(ltd);
         setLongitude(lgn);
       },
-      err => {
+      () => {
         alert(
           'Seu navegador não suporta geolocalização, preencher latitude e longitude manual'
         );
@@ -41,6 +47,53 @@ export default function Logup() {
     setFileName(e.target.files[0].name);
   }
 
+  function handleReset() {
+    setFile(null);
+    setCompanyName('');
+    setLinkedin('');
+    setEmail('');
+    setPassword('');
+    setLatitude('');
+    setLongitude('');
+    setStreet('');
+    setNumber('');
+    setComplement('');
+    setPhone('');
+    setTechs('');
+
+    history.push('/');
+  }
+
+  async function handleAddCompany(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const S3Clint = new S3(AWS_CONFIG);
+      const responseS3 = await S3Clint.uploadFile(file, fileName);
+
+      await api.post('/company', {
+        email,
+        password,
+        name: companyName,
+        linkedin,
+        logo: responseS3.location,
+        techs,
+        latitude,
+        longitude,
+        street,
+        number,
+        complement,
+        phone,
+      });
+
+      setLoading(false);
+      handleReset();
+    } catch (error) {
+      setLoading(false);
+      toast.error('Erro ao cadastrar sua empresa, verifique os dados!');
+    }
+  }
+
   return (
     <Container>
       <Box>
@@ -52,6 +105,7 @@ export default function Logup() {
             id="logomarca"
             onChange={e => handleFileChange(e)}
             fileName={fileName}
+            required
           />
           <Grid>
             <InputData
@@ -61,6 +115,7 @@ export default function Logup() {
               id="companyName"
               value={companyName}
               onChange={e => setCompanyName(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -69,6 +124,7 @@ export default function Logup() {
               id="linkedin"
               value={linkedin}
               onChange={e => setLinkedin(e.target.value)}
+              required
             />
             <InputData
               type="email"
@@ -77,6 +133,7 @@ export default function Logup() {
               id="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
+              required
             />
             <InputData
               type="password"
@@ -93,6 +150,7 @@ export default function Logup() {
               id="latitude"
               value={latitude}
               onChange={e => setLatitude(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -101,6 +159,7 @@ export default function Logup() {
               id="longitude"
               value={longitude}
               onChange={e => setLongitude(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -109,6 +168,7 @@ export default function Logup() {
               id="street"
               value={street}
               onChange={e => setStreet(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -117,6 +177,7 @@ export default function Logup() {
               id="number"
               value={number}
               onChange={e => setNumber(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -125,6 +186,7 @@ export default function Logup() {
               id="complement"
               value={complement}
               onChange={e => setComplement(e.target.value)}
+              required
             />
             <InputData
               type="text"
@@ -133,6 +195,7 @@ export default function Logup() {
               id="phone"
               value={phone}
               onChange={e => setPhone(e.target.value)}
+              required
             />
           </Grid>
           <InputData
@@ -142,12 +205,23 @@ export default function Logup() {
             id="tech"
             value={techs}
             onChange={e => setTechs(e.target.value)}
+            required
             big
           />
         </Form>
         <Actions>
-          <SButton type="reset" title="Cancelar" bgWhite />
-          <SButton type="submit" title="Cadastrar" />
+          <SButton
+            type="reset"
+            title="Cancelar"
+            bgWhite
+            onClick={handleReset}
+          />
+          <SButton
+            type="submit"
+            title="Cadastrar"
+            onClick={e => handleAddCompany(e)}
+            loading={loading}
+          />
         </Actions>
       </Box>
     </Container>
