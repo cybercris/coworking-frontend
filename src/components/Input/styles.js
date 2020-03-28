@@ -13,4 +13,7 @@ export const InputFile = styled.input`
 
 export const FileName = styled.span`
   color: ${colors.lighter};
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.7px;
 `;

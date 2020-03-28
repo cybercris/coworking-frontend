@@ -146,7 +146,7 @@ export default function Logup() {
           />
         </Form>
         <Actions>
-          <SButton type="submit" title="Cancelar" bgWhite />
+          <SButton type="reset" title="Cancelar" bgWhite />
           <SButton type="submit" title="Cadastrar" />
         </Actions>
       </Box>
