@@ -1,6 +1,5 @@
 import React from 'react';
 import { GoSignOut } from 'react-icons/go';
-import { FaUserCircle } from 'react-icons/fa';
 
 import {
   Container,
@@ -29,6 +28,7 @@ export default function Header() {
           />
         </Avatar>
         <CompanyData>
+          {/* lembrar de transformar isso pra column  */}
           <Row>
             <Text>Concrete Solutions</Text>
             <Text>Rua benfica, N 90</Text>
