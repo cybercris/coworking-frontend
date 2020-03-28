@@ -38,7 +38,6 @@ export const Avatar = styled.div`
   margin-right: 40px;
   width: 110px;
   height: 110px;
-  background-color: blue;
 
   display: flex;
   align-items: center;
@@ -47,6 +46,7 @@ export const Avatar = styled.div`
 
 export const Img = styled.img`
   border-radius: 50%;
+  width: 100%;
 `;
 
 export const Text = styled.p`
