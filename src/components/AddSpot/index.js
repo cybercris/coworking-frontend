@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Container, Form, Box, Title, InputFile, InputData } from './styles';
 import { Actions, SButton } from '~/pages/Logup/styles';
+import history from '../../services/history';
 
 export default function AddSpot() {
   const [fileName, setFileName] = useState('Foto');
@@ -13,6 +14,15 @@ export default function AddSpot() {
   function handleFileChange(e) {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
+  }
+
+  function handleReset() {
+    setFile(null);
+    setFileName('Foto');
+    setSpotName('');
+    setBooking('');
+
+    history.push('/dashboard');
   }
 
   return (
@@ -46,7 +56,12 @@ export default function AddSpot() {
           />
         </Box>
         <Actions>
-          <SButton type="reset" title="Cancelar" bgWhite />
+          <SButton
+            bgWhite
+            type="reset"
+            title="Cancelar"
+            onClick={handleReset}
+          />
           <SButton type="submit" title="Cadastrar" />
         </Actions>
       </Form>

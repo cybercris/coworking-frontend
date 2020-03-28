@@ -44,7 +44,7 @@ export const InputFile = styled(Input)`
 
 export const InputData = styled(Input)`
   width: 100%;
-  height: 2.8rem;
+  height: 3rem;
   border: 0.5px solid;
   border-radius: 4px;
   padding: 10px;

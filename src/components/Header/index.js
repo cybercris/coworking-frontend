@@ -10,6 +10,8 @@ import {
   CompanyData,
   Avatar,
   Text,
+  Img,
+  Row,
 } from './styles';
 
 export default function Header() {
@@ -21,13 +23,21 @@ export default function Header() {
       </Top>
       <CompanyInfo>
         <Avatar>
-          <FaUserCircle size={130} />
+          <Img
+            src="https://pscoworking.s3-sa-east-1.amazonaws.com/concrete.png.png"
+            alt=""
+            style={{ borderRadius: '50%', width: '100%' }}
+          />
         </Avatar>
         <CompanyData>
-          <Text>Concrete Solutions</Text>
-          <Text>Rua benfica, N 90</Text>
-          <Text>concrete@gmail.com</Text>
-          <Text>(81) 3236-4534</Text>
+          <Row>
+            <Text>Concrete Solutions</Text>
+            <Text>Rua benfica, N 90</Text>
+          </Row>
+          <Row>
+            <Text>concrete@gmail.com</Text>
+            <Text>(81) 3236-4534</Text>
+          </Row>
         </CompanyData>
       </CompanyInfo>
     </Container>

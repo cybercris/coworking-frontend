@@ -23,7 +23,7 @@ export const Logo = styled.h1`
 
 export const CompanyInfo = styled.div`
   background-color: ${colors.secondary};
-  padding: 0 100px;
+  padding: 18px 100px;
   margin: 0 auto;
 
   display: flex;
@@ -36,13 +36,17 @@ export const CompanyData = styled.div`
 
 export const Avatar = styled.div`
   margin-right: 40px;
-  width: 130px;
-  height: 130px;
-  border-radius: 65px;
+  width: 110px;
+  height: 110px;
+  background-color: blue;
 
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const Img = styled.img`
+  border-radius: 50%;
 `;
 
 export const Text = styled.p`
@@ -51,4 +55,13 @@ export const Text = styled.p`
   font-weight: 600;
   letter-spacing: 0.7px;
   padding: 5px 0;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  p:first-child {
+    margin-right: 60px;
+  }
 `;
