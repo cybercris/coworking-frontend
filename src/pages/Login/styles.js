@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { colors } from '~/styles/themes';
 
 import Input from '~/components/Input';
@@ -35,7 +36,8 @@ export const Form = styled.form`
   margin: 8px 0 14px 0;
 `;
 
-export const Text = styled.p`
+export const Text = styled(Link)`
+  color: ${colors.light};
   font-size: 0.8rem;
   font-weight: 900;
 `;

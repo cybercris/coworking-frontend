@@ -17,7 +17,7 @@ export default function Login() {
           />
           <BButton type="submit" title="Entrar" />
         </Form>
-        <Text>Cadastrar</Text>
+        <Text to="/logup">Cadastrar</Text>
       </Box>
     </Container>
   );
