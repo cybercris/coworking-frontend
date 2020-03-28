@@ -26,7 +26,6 @@ export default function Header() {
           <Img
             src="https://pscoworking.s3-sa-east-1.amazonaws.com/concrete.png.png"
             alt=""
-            style={{ borderRadius: '50%', width: '100%' }}
           />
         </Avatar>
         <CompanyData>
