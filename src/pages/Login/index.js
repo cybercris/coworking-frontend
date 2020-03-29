@@ -26,7 +26,6 @@ export default function Login() {
     },
     validationSchema: formValidator,
     onSubmit: (values, e) => {
-      e.preventDefault();
       dispatch(
         CompanyActions.siginCompanyRequest(values.email, values.password)
       );
