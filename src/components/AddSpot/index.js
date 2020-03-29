@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 import { Container, Form, Box, Title, InputFile, InputData } from './styles';
 import { Actions, SButton } from '~/pages/Logup/styles';
@@ -46,7 +47,11 @@ export default function AddSpot() {
             value={spotName}
             onChange={e => setSpotName(e.target.value)}
           />
-          <InputData
+          <NumberFormat
+            customInput={InputData}
+            prefix="R$"
+            inputMode="numeric"
+            thousandSeparator
             type="text"
             placeholder="Valor da diária"
             name="booking"
