@@ -60,9 +60,13 @@ export const Text = styled.p`
 
 export const Row = styled.div`
   display: flex;
-  flex-direction: row;
 
-  p:first-child {
-    margin-right: 60px;
+  div:first-child {
+    margin-right: 40px;
   }
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

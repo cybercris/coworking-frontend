@@ -38,7 +38,7 @@ export default function Login() {
         <Title>LOGIN</Title>
         <Form onSubmit={formik.handleSubmit} autoComplete="off">
           <SInput
-            type="email"
+            type="text"
             name="email"
             id="email"
             placeholder="Email"

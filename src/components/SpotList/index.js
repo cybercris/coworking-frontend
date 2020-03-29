@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import spotData from './spot_data';
 
 import { Creators as CompanyActions } from '../../store/ducks/company';
-import { Container, Title, List, AddIcon } from './styles';
+import { Container, Title, List, AddIcon, useStyles } from './styles';
 
 export default function SpotList() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const spots = useSelector(state => state.company.spots);
 
@@ -25,7 +30,25 @@ export default function SpotList() {
             </div>
           </li>
         </Link>
-        {/* <li></li> */}
+        {spotData.map((item, index) => (
+          <li className="spot">
+            <img
+              src="https://pscoworking.s3-sa-east-1.amazonaws.com/office.jpg.jpeg"
+              alt=""
+            />
+            <div>
+              <Tooltip
+                classes={{ tooltip: classes.customTooltip }}
+                title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              >
+                <p>
+                  Nome: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p>
+              </Tooltip>
+              <p>Valor: R$ 50,00</p>
+            </div>
+          </li>
+        ))}
       </List>
     </Container>
   );

@@ -16,6 +16,7 @@ import {
   Text,
   Img,
   Row,
+  Column,
 } from './styles';
 
 export default function Header() {
