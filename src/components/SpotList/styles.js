@@ -20,22 +20,22 @@ export const List = styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 50px;
+  grid-gap: 40px;
+
+  li {
+    width: 215px;
+    height: 210px;
+    border-radius: 4px;
+    border: 0.5px solid ${colors.tertiary};
+    background: ${colors.secondary};
+    color: ${colors.tertiary};
+  }
 
   li:first-child {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-
-  li {
-    width: 160px;
-    height: 180px;
-    border-radius: 4px;
-    border: 0.5px solid red;
-    background: ${colors.secondary};
-    color: ${colors.tertiary};
 
     div {
       width: 80%;
@@ -51,10 +51,40 @@ export const List = styled.ul`
       }
     }
   }
+
+  .spot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid ${colors.lighter};
+
+    img {
+      width: 214px;
+      height: 130px;
+    }
+
+    div {
+      width: 80%;
+      border-top: 0.5px solid ${colors.lighter};
+      margin-top: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      p {
+        color: ${colors.lighter};
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: left;
+        letter-spacing: 0.5px;
+        padding-top: 5px;
+      }
+    }
+  }
 `;
 
 export const AddIcon = styled(IoIosAddCircleOutline).attrs({
-  size: '70',
+  size: '80',
   color: colors.tertiary,
 })`
   flex: 0.75;
