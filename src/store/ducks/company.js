@@ -5,13 +5,17 @@ import produce from 'immer';
 export const { Types, Creators } = createActions({
   // actionType: ['dataPassed'],
   siginCompanyRequest: ['email', 'password'],
-  siginCompanySuccess: ['company'],
+  siginCompanySuccess: ['companyId'],
   siginCompanyError: [],
+  getCompanyByIdRequest: ['companyId'],
+  getCompanyByIdSuccess: ['company'],
+  getCompanyByIdError: [''],
 });
 
 /* Initial State */
 export const INITIAL_STATE = {
   loading: false,
+  loadingHeader: false,
   data: {
     id: '',
     email: '',
@@ -35,6 +39,22 @@ const siginCompanyRequest = (state = INITIAL_STATE) =>
 
 const siginCompanySuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
+    draft.data.id = action.companyId;
+    draft.loading = true;
+  });
+
+const siginCompanyError = (state = INITIAL_STATE) =>
+  produce(state, draft => {
+    draft.loading = false;
+  });
+
+const getCompanyByIdRequest = (state = INITIAL_STATE) =>
+  produce(state, draft => {
+    draft.loadingHeader = true;
+  });
+
+const getCompanyByIdSuccess = (state = INITIAL_STATE, action) =>
+  produce(state, draft => {
     draft.data.id = action.company.id;
     draft.data.email = action.company.email;
     draft.data.name = action.company.name;
@@ -46,12 +66,12 @@ const siginCompanySuccess = (state = INITIAL_STATE, action) =>
     draft.data.phone = action.company.phone;
     draft.data.spots = action.company.spots;
     draft.data.street = action.company.street;
-    draft.loading = true;
+    draft.loadingHeader = false;
   });
 
-const siginCompanyError = (state = INITIAL_STATE) =>
+const getCompanyByIdError = (state = INITIAL_STATE) =>
   produce(state, draft => {
-    draft.loading = false;
+    draft.loadingHeader = false;
   });
 
 /* Reducers to types */
@@ -60,4 +80,7 @@ export default createReducer(INITIAL_STATE, {
   [Types.SIGIN_COMPANY_REQUEST]: siginCompanyRequest,
   [Types.SIGIN_COMPANY_SUCCESS]: siginCompanySuccess,
   [Types.SIGIN_COMPANY_ERROR]: siginCompanyError,
+  [Types.GET_COMPANY_BY_ID_REQUEST]: getCompanyByIdRequest,
+  [Types.GET_COMPANY_BY_ID_SUCCESS]: getCompanyByIdSuccess,
+  [Types.GET_COMPANY_BY_ID_ERROR]: getCompanyByIdError,
 });

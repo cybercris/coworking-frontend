@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GoSignOut } from 'react-icons/go';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Skeleton from '@material-ui/lab/Skeleton';
+
+import { Creators as CompanyActions } from '../../store/ducks/company';
 
 import {
   Container,
@@ -16,8 +19,16 @@ import {
 } from './styles';
 
 export default function Header() {
-  const company = useSelector(state => state.company.data);
+  const dispatch = useDispatch();
+  const company = useSelector(state => state.company);
 
+  useEffect(() => {
+    dispatch(
+      CompanyActions.getCompanyByIdRequest(localStorage.getItem('companyId'))
+    );
+  }, [dispatch]);
+
+  console.log(company);
   return (
     <Container>
       <Top>
@@ -31,17 +42,35 @@ export default function Header() {
       </Top>
       <CompanyInfo>
         <Avatar>
-          <Img src={company?.logo} alt="logo" />
+          {company.loadingHeader ? (
+            <Skeleton
+              variant="circle"
+              width={110}
+              height={110}
+              animation="wave"
+            />
+          ) : (
+            <Img src={company.data?.logo} alt="logo" />
+          )}
         </Avatar>
         <CompanyData>
-          <Row>
-            <Text>{company?.name}</Text>
-            <Text>{company?.street}</Text>
-          </Row>
-          <Row>
-            <Text>{company?.email}</Text>
-            <Text>{company?.phone}</Text>
-          </Row>
+          {company.loadingHeader ? (
+            <>
+              <Skeleton variant="text" animation="wave" width="100%" />
+              <Skeleton variant="text" animation="wave" width="100%" />
+            </>
+          ) : (
+            <>
+              <Row>
+                <Text>{company.data?.name}</Text>
+                <Text>{company.data?.street}</Text>
+              </Row>
+              <Row>
+                <Text>{company.data?.email}</Text>
+                <Text>{company.data?.phone}</Text>
+              </Row>
+            </>
+          )}
         </CompanyData>
       </CompanyInfo>
     </Container>
