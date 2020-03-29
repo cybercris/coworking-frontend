@@ -1,5 +1,7 @@
 import React from 'react';
 import { GoSignOut } from 'react-icons/go';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import {
   Container,
@@ -14,28 +16,32 @@ import {
 } from './styles';
 
 export default function Header() {
+  const company = useSelector(state => state.company.data);
+
   return (
     <Container>
       <Top>
-        <Logo>Coworking</Logo>
-        <GoSignOut size={30} color="#FFF" />
+        <Link to="/dashboard">
+          <Logo>Coworking</Logo>
+        </Link>
+
+        <Link to="/">
+          <GoSignOut size={30} color="#FFF" />
+        </Link>
       </Top>
       <CompanyInfo>
         <Avatar>
-          <Img
-            src="https://pscoworking.s3-sa-east-1.amazonaws.com/concrete.png.png"
-            alt=""
-          />
+          <Img src={company?.logo} alt="logo" />
         </Avatar>
         <CompanyData>
           {/* lembrar de transformar isso pra column  */}
           <Row>
-            <Text>Concrete Solutions</Text>
-            <Text>Rua benfica, N 90</Text>
+            <Text>{company?.name}</Text>
+            <Text>{company?.street}</Text>
           </Row>
           <Row>
-            <Text>concrete@gmail.com</Text>
-            <Text>(81) 3236-4534</Text>
+            <Text>{company?.email}</Text>
+            <Text>{company?.phone}</Text>
           </Row>
         </CompanyData>
       </CompanyInfo>

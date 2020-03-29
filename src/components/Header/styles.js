@@ -13,7 +13,7 @@ export const Top = styled.div`
 
   height: 70px;
   padding: 0 100px;
-  margin: 0 auto;
+  margin: 0 auto; ,
 `;
 
 export const Logo = styled.h1`
@@ -38,7 +38,6 @@ export const Avatar = styled.div`
   margin-right: 40px;
   width: 110px;
   height: 110px;
-  background-color: blue;
 
   display: flex;
   align-items: center;
@@ -48,6 +47,7 @@ export const Avatar = styled.div`
 export const Img = styled.img`
   width: 100%;
   border-radius: 50%;
+  width: 100%;
 `;
 
 export const Text = styled.p`
