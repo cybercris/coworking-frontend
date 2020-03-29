@@ -56,8 +56,8 @@ export default function Header() {
         <CompanyData>
           {company.loadingHeader ? (
             <>
-              <Skeleton variant="text" animation="wave" width="100%" />
-              <Skeleton variant="text" animation="wave" width="100%" />
+              <Skeleton variant="text" animation="wave" width="500px" />
+              <Skeleton variant="text" animation="wave" width="500px" />
             </>
           ) : (
             <>

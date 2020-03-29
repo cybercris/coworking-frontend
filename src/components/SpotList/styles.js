@@ -19,8 +19,8 @@ export const Title = styled.h1`
 export const List = styled.ul`
   list-style: none;
   display: grid;
-  grid-template-areas: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
 
   li:first-child {
     display: flex;

@@ -19,12 +19,13 @@ export default function Input({
           name={name}
           id={id}
           placeholder={placeholder}
+          required
           // value={value}
           {...rest}
         />
       ) : (
         <Label htmlFor={id} {...rest}>
-          <InputFile type={type} name={name} id={id} />
+          <InputFile type={type} name={name} id={id} required />
           <FileName>{fileName}</FileName>
         </Label>
       )}
