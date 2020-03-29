@@ -9,13 +9,17 @@ export const { Types, Creators } = createActions({
   siginCompanyError: [],
   getCompanyByIdRequest: ['companyId'],
   getCompanyByIdSuccess: ['company'],
-  getCompanyByIdError: [''],
+  getCompanyByIdError: [],
+  getSpotsRequest: ['companyId'],
+  getSpotsSuccess: ['spots'],
+  getSpotsError: [],
 });
 
 /* Initial State */
 export const INITIAL_STATE = {
   loading: false,
   loadingHeader: false,
+  loadingSpots: false,
   data: {
     id: '',
     email: '',
@@ -74,6 +78,22 @@ const getCompanyByIdError = (state = INITIAL_STATE) =>
     draft.loadingHeader = false;
   });
 
+const getSpotsRequest = (state = INITIAL_STATE) =>
+  produce(state, draft => {
+    draft.loadingSpots = true;
+  });
+
+const getSpotsSuccess = (state = INITIAL_STATE, action) =>
+  produce(state, draft => {
+    draft.data.spots = action.spots;
+    draft.loadingSpots = false;
+  });
+
+const getSpotsError = (state = INITIAL_STATE) =>
+  produce(state, draft => {
+    draft.loadingSpots = false;
+  });
+
 /* Reducers to types */
 export default createReducer(INITIAL_STATE, {
   // [Types.ACTION_TYPE]: reducer,
@@ -83,4 +103,7 @@ export default createReducer(INITIAL_STATE, {
   [Types.GET_COMPANY_BY_ID_REQUEST]: getCompanyByIdRequest,
   [Types.GET_COMPANY_BY_ID_SUCCESS]: getCompanyByIdSuccess,
   [Types.GET_COMPANY_BY_ID_ERROR]: getCompanyByIdError,
+  [Types.GET_SPOTS_REQUEST]: getSpotsRequest,
+  [Types.GET_SPOTS_SUCCESS]: getSpotsSuccess,
+  [Types.GET_SPOTS_ERROR]: getSpotsError,
 });

@@ -55,3 +55,13 @@ export function* getCompanyById({ companyId }) {
     yield put(CompanyActions.getCompanyByIdError());
   }
 }
+
+export function* getSpotsByCompanyId({ companyId }) {
+  try {
+    const responseSpots = yield call(api.get, `/spot/${companyId}`);
+
+    yield put(CompanyActions.getSpotsSuccess(responseSpots.data.spots));
+  } catch (error) {
+    yield put(CompanyActions.getSpotsError());
+  }
+}
