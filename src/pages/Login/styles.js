@@ -34,6 +34,10 @@ export const Form = styled.form`
   flex-direction: column;
   padding: 24px 28px 30px;
   margin: 8px 0 14px 0;
+
+  .error {
+    border-color: red;
+  }
 `;
 
 export const Text = styled(Link)`
@@ -47,14 +51,21 @@ export const SInput = styled(Input)`
   height: 2.8rem;
   border: 0.5px solid;
   border-radius: 4px;
-  margin-bottom: 22px;
   padding: 10px;
   font-size: 0.8rem;
+  margin-bottom: ${props => (props.marginError ? 0 : '22px')};
 
   &::placeholder {
     color: ${colors.lighter};
     font-weight: 500;
   }
+`;
+
+export const Error = styled.div`
+  color: red;
+  font-size: 13px;
+  margin-top: ${props => (props.marginError ? '4px' : 0)};
+  margin-bottom: ${props => (props.marginError ? '10px' : 0)};
 `;
 
 export const BButton = styled(Button)`

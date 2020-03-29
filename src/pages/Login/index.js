@@ -1,50 +1,86 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
 
+import formValidator from './form_validator';
 import { Creators as CompanyActions } from '../../store/ducks/company';
-import { Container, Box, Title, Form, Text, SInput, BButton } from './styles';
+import {
+  Container,
+  Box,
+  Title,
+  Form,
+  Text,
+  SInput,
+  BButton,
+  Error,
+} from './styles';
 
 export default function Login() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.company.loading);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  function handleCompanySigin(e) {
-    e.preventDefault();
-    dispatch(CompanyActions.siginCompanyRequest(email, password));
-
-    setEmail('');
-    setPassword('');
-  }
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: formValidator,
+    onSubmit: (values, e) => {
+      e.preventDefault();
+      dispatch(
+        CompanyActions.siginCompanyRequest(values.email, values.password)
+      );
+    },
+  });
 
   return (
     <Container>
       <Box>
         <Title>LOGIN</Title>
-        <Form>
+        <Form onSubmit={formik.handleSubmit} autoComplete="off">
           <SInput
             type="email"
             name="email"
             id="email"
             placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={
+              formik.errors.email && formik.touched.email ? 'error' : ''
+            }
+            marginError={!!(formik.errors.email && formik.touched.email)}
           />
+          {formik.errors.email && formik.touched.email && (
+            <Error
+              marginError={!!(formik.errors.email && formik.touched.email)}
+            >
+              {formik.errors.email}
+            </Error>
+          )}
           <SInput
             type="password"
             name="password"
             id="paswword"
             placeholder="Senha"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={
+              formik.errors.password && formik.touched.password ? 'error' : ''
+            }
+            marginError={!!(formik.errors.password && formik.touched.password)}
           />
-          <BButton
-            type="submit"
-            title="Entrar"
-            loading={loading}
-            onClick={e => handleCompanySigin(e)}
-          />
+          {formik.errors.password && formik.touched.password && (
+            <Error
+              marginError={
+                !!(formik.errors.password && formik.touched.password)
+              }
+            >
+              {formik.errors.password}
+            </Error>
+          )}
+          <BButton type="submit" title="Entrar" loading={loading} />
         </Form>
         <Text to="/logup">Cadastrar</Text>
       </Box>
