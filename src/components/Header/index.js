@@ -34,6 +34,7 @@ export default function Header() {
           <Img src={company?.logo} alt="logo" />
         </Avatar>
         <CompanyData>
+          {/* lembrar de transformar isso pra column  */}
           <Row>
             <Text>{company?.name}</Text>
             <Text>{company?.street}</Text>

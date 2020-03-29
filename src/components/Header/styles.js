@@ -13,7 +13,7 @@ export const Top = styled.div`
 
   height: 70px;
   padding: 0 100px;
-  margin: 0 auto;
+  margin: 0 auto; ,
 `;
 
 export const Logo = styled.h1`
