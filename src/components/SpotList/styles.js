@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
+import { makeStyles } from '@material-ui/core';
 import { colors } from '~/styles/themes';
 
 export const Container = styled.div`
@@ -89,3 +90,9 @@ export const AddIcon = styled(IoIosAddCircleOutline).attrs({
 })`
   flex: 0.75;
 `;
+
+export const useStyles = makeStyles({
+  customTooltip: {
+    fontSize: '1rem',
+  },
+});

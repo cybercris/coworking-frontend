@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import spotData from './spot_data';
-import { Container, Title, List, AddIcon } from './styles';
+import { Container, Title, List, AddIcon, useStyles } from './styles';
 
 export default function SpotList() {
+  const classes = useStyles();
   return (
     <Container>
       <Title>Locais</Title>
@@ -25,7 +26,10 @@ export default function SpotList() {
               alt=""
             />
             <div>
-              <Tooltip title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+              <Tooltip
+                classes={{ tooltip: classes.customTooltip }}
+                title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              >
                 <p>
                   Nome: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 </p>
