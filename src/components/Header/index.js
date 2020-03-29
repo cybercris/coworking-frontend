@@ -16,6 +16,7 @@ import {
   Text,
   Img,
   Row,
+  Column,
 } from './styles';
 
 export default function Header() {
@@ -60,16 +61,16 @@ export default function Header() {
               <Skeleton variant="text" animation="wave" width="500px" />
             </>
           ) : (
-            <>
-              <Row>
+            <Row>
+              <Column>
                 <Text>{company.data?.name}</Text>
-                <Text>{company.data?.street}</Text>
-              </Row>
-              <Row>
                 <Text>{company.data?.email}</Text>
+              </Column>
+              <Column>
+                <Text>{company.data?.street}</Text>
                 <Text>{company.data?.phone}</Text>
-              </Row>
-            </>
+              </Column>
+            </Row>
           )}
         </CompanyData>
       </CompanyInfo>
