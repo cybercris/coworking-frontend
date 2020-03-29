@@ -48,7 +48,6 @@ export function* getCompanyById({ companyId }) {
         number: responseCompany.data.company.number,
         complement: responseCompany.data.company.complement,
         phone: responseCompany.data.company.phone,
-        spots: responseCompany.data.company.spots,
       })
     );
   } catch (error) {

@@ -7,13 +7,12 @@ import { Container, Title, List, AddIcon } from './styles';
 
 export default function SpotList() {
   const dispatch = useDispatch();
-  const spots = useSelector(state => state.company.data.spots);
+  const spots = useSelector(state => state.company.spots);
 
   useEffect(() => {
     dispatch(CompanyActions.getSpotsRequest(localStorage.getItem('companyId')));
   }, [dispatch]);
 
-  console.log('spots###', spots);
   return (
     <Container>
       <Title>Locais</Title>

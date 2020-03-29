@@ -31,8 +31,8 @@ export const INITIAL_STATE = {
     number: '',
     complement: '',
     phone: '',
-    spots: [],
   },
+  spots: [],
 };
 
 /* Reducers */
@@ -68,7 +68,6 @@ const getCompanyByIdSuccess = (state = INITIAL_STATE, action) =>
     draft.data.number = action.company.number;
     draft.data.complement = action.company.complement;
     draft.data.phone = action.company.phone;
-    draft.data.spots = action.company.spots;
     draft.data.street = action.company.street;
     draft.loadingHeader = false;
   });
@@ -85,7 +84,7 @@ const getSpotsRequest = (state = INITIAL_STATE) =>
 
 const getSpotsSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
-    draft.data.spots = action.spots;
+    draft.spots = action.spots;
     draft.loadingSpots = false;
   });
 

@@ -20,7 +20,8 @@ import {
 
 export default function Header() {
   const dispatch = useDispatch();
-  const company = useSelector(state => state.company);
+  const company = useSelector(state => state.company.data);
+  const loadingHeader = useSelector(state => state.company.loadingHeader);
 
   useEffect(() => {
     dispatch(
@@ -28,7 +29,6 @@ export default function Header() {
     );
   }, [dispatch]);
 
-  console.log(company);
   return (
     <Container>
       <Top>
@@ -42,7 +42,7 @@ export default function Header() {
       </Top>
       <CompanyInfo>
         <Avatar>
-          {company.loadingHeader ? (
+          {loadingHeader && !company.logo ? (
             <Skeleton
               variant="circle"
               width={110}
@@ -50,11 +50,11 @@ export default function Header() {
               animation="wave"
             />
           ) : (
-            <Img src={company.data?.logo} alt="logo" />
+            <Img src={company.logo} alt="logo" />
           )}
         </Avatar>
         <CompanyData>
-          {company.loadingHeader ? (
+          {loadingHeader && !company.name ? (
             <>
               <Skeleton variant="text" animation="wave" width="500px" />
               <Skeleton variant="text" animation="wave" width="500px" />
@@ -62,12 +62,12 @@ export default function Header() {
           ) : (
             <>
               <Row>
-                <Text>{company.data?.name}</Text>
-                <Text>{company.data?.street}</Text>
+                <Text>{company.name}</Text>
+                <Text>{company.street}</Text>
               </Row>
               <Row>
-                <Text>{company.data?.email}</Text>
-                <Text>{company.data?.phone}</Text>
+                <Text>{company.email}</Text>
+                <Text>{company.phone}</Text>
               </Row>
             </>
           )}
