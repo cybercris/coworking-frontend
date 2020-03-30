@@ -44,7 +44,7 @@ const siginCompanyRequest = (state = INITIAL_STATE) =>
 const siginCompanySuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.data.id = action.companyId;
-    draft.loading = true;
+    draft.loading = false;
   });
 
 const siginCompanyError = (state = INITIAL_STATE) =>
