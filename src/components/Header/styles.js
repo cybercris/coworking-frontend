@@ -13,7 +13,7 @@ export const Top = styled.div`
 
   height: 70px;
   padding: 0 100px;
-  margin: 0 auto; ,
+  margin: 0 auto;
 `;
 
 export const Logo = styled.h1`
@@ -56,6 +56,7 @@ export const Text = styled.p`
   font-weight: 600;
   letter-spacing: 0.7px;
   padding: 5px 0;
+  margin-right: 40px;
 `;
 
 export const Row = styled.div`

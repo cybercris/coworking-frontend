@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import spotData from './spot_data';
-
 import { Creators as CompanyActions } from '../../store/ducks/company';
 import { Container, Title, List, AddIcon, useStyles } from './styles';
 
@@ -30,22 +28,28 @@ export default function SpotList() {
             </div>
           </li>
         </Link>
-        {spotData.map((item, index) => (
+        {spots.map(spot => (
           <li className="spot">
-            <img
-              src="https://pscoworking.s3-sa-east-1.amazonaws.com/office.jpg.jpeg"
-              alt=""
-            />
+            <img src={spot.image} alt="local" />
             <div>
               <Tooltip
                 classes={{ tooltip: classes.customTooltip }}
-                title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                title={spot.name}
+                arrow
               >
                 <p>
-                  Nome: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  <strong>Nome: </strong> {spot.name}
                 </p>
               </Tooltip>
-              <p>Valor: R$ 50,00</p>
+              <Tooltip
+                classes={{ tooltip: classes.customTooltip }}
+                title={spot.price}
+                arrow
+              >
+                <p>
+                  <strong>Valor: </strong> {spot.price}
+                </p>
+              </Tooltip>
             </div>
           </li>
         ))}

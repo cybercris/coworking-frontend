@@ -68,9 +68,6 @@ export const List = styled.ul`
       width: 80%;
       border-top: 0.5px solid ${colors.lighter};
       margin-top: 20px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
 
       p {
         color: ${colors.lighter};
@@ -79,6 +76,14 @@ export const List = styled.ul`
         text-align: left;
         letter-spacing: 0.5px;
         padding-top: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        strong {
+          color: #000;
+          font-weight: 600;
+        }
       }
     }
   }
