@@ -1,6 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
+import PrivateRoute from './PrivateRoute';
 import Login from '~/pages/Login';
 import Logup from '~/pages/Logup';
 import Dashboard from '~/pages/Dashboard';
@@ -8,9 +9,9 @@ import Dashboard from '~/pages/Dashboard';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" exact component={Login} />
-      <Route path="/logup" component={Logup} />
-      <Route path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/" exact component={Login} />
+      <PrivateRoute path="/logup" component={Logup} />
+      <PrivateRoute path="/dashboard" isPrivate component={Dashboard} />
     </Switch>
   );
 }

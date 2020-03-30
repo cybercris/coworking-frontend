@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Skeleton from '@material-ui/lab/Skeleton';
 
+import history from '../../services/history';
 import { Creators as CompanyActions } from '../../store/ducks/company';
 
 import {
@@ -29,6 +30,13 @@ export default function Header() {
     );
   }, [dispatch]);
 
+  function handleSignUot(e) {
+    e.preventDefault();
+    localStorage.removeItem('companyId');
+
+    history.push('/');
+  }
+
   return (
     <Container>
       <Top>
@@ -36,9 +44,7 @@ export default function Header() {
           <Logo>Coworking</Logo>
         </Link>
 
-        <Link to="/">
-          <GoSignOut size={30} color="#FFF" />
-        </Link>
+        <GoSignOut size={30} color="#FFF" onClick={e => handleSignUot(e)} />
       </Top>
       <CompanyInfo>
         <Avatar>
