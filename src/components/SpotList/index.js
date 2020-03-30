@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import SpotLoading from './spotLoading';
 import { Creators as CompanyActions } from '../../store/ducks/company';
 import { Container, Title, List, AddIcon, useStyles } from './styles';
 
@@ -28,31 +29,35 @@ export default function SpotList() {
             </div>
           </li>
         </Link>
-        {spots.map(spot => (
-          <li className="spot">
-            <img src={spot.image} alt="local" />
-            <div>
-              <Tooltip
-                classes={{ tooltip: classes.customTooltip }}
-                title={spot.name}
-                arrow
-              >
-                <p>
-                  <strong>Nome: </strong> {spot.name}
-                </p>
-              </Tooltip>
-              <Tooltip
-                classes={{ tooltip: classes.customTooltip }}
-                title={spot.price}
-                arrow
-              >
-                <p>
-                  <strong>Valor: </strong> {spot.price}
-                </p>
-              </Tooltip>
-            </div>
-          </li>
-        ))}
+        {spots.length ? (
+          spots.map(spot => (
+            <li className="spot" key={spot._id}>
+              <img src={spot.image} alt="local" />
+              <div>
+                <Tooltip
+                  classes={{ tooltip: classes.customTooltip }}
+                  title={spot.name}
+                  arrow
+                >
+                  <p>
+                    <strong>Nome: </strong> {spot.name}
+                  </p>
+                </Tooltip>
+                <Tooltip
+                  classes={{ tooltip: classes.customTooltip }}
+                  title={spot.price}
+                  arrow
+                >
+                  <p>
+                    <strong>Valor: </strong> {spot.price}
+                  </p>
+                </Tooltip>
+              </div>
+            </li>
+          ))
+        ) : (
+          <SpotLoading />
+        )}
       </List>
     </Container>
   );

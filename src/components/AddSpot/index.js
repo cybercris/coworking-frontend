@@ -57,7 +57,6 @@ export default function AddSpot() {
       <Form>
         <Box>
           <Title>Adicionar Local</Title>
-          {/* <Link to="/dashboard">Spot list</Link> */}
           <InputFile
             type="file"
             name="spotPhoto"
