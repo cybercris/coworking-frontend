@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import S3 from 'aws-s3';
 import { toast } from 'react-toastify';
+import NumberFormat from 'react-number-format';
 
 import { AWS_CONFIG } from '../../config/awsConfig';
 import history from '../../services/history';
@@ -72,7 +73,11 @@ export default function AddSpot() {
             value={spotName}
             onChange={e => setSpotName(e.target.value)}
           />
-          <InputData
+          <NumberFormat
+            customInput={InputData}
+            prefix="R$"
+            inputMode="numeric"
+            thousandSeparator
             type="text"
             placeholder="Valor da diária"
             name="booking"
