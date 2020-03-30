@@ -17,6 +17,7 @@ import {
   Text,
   Img,
   Row,
+  Column,
 } from './styles';
 
 export default function Header() {
@@ -62,20 +63,20 @@ export default function Header() {
         <CompanyData>
           {loadingHeader && !company.name ? (
             <>
-              <Skeleton variant="text" animation="wave" width="500px" />
-              <Skeleton variant="text" animation="wave" width="500px" />
+              <Skeleton variant="text" animation="wave" width="600px" />
+              <Skeleton variant="text" animation="wave" width="600px" />
             </>
           ) : (
-            <>
-              <Row>
+            <Row>
+              <Column>
                 <Text>{company.name}</Text>
-                <Text>{company.street}</Text>
-              </Row>
-              <Row>
                 <Text>{company.email}</Text>
+              </Column>
+              <Column>
+                <Text>{company.street}</Text>
                 <Text>{company.phone}</Text>
-              </Row>
-            </>
+              </Column>
+            </Row>
           )}
         </CompanyData>
       </CompanyInfo>
