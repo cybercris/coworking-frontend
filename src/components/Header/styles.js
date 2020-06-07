@@ -16,6 +16,19 @@ export const Top = styled.div`
   margin: 0 auto;
 `;
 
+export const ContainerBooking = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Booking = styled.p`
+  margin-left: 50px;
+  font-size: 20px;
+  color: ${colors.secondary};
+  font-weight: 100;
+`;
+
 export const Logo = styled.h1`
   color: ${colors.secondary};
   font-weight: 100;

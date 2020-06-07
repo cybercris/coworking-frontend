@@ -18,6 +18,8 @@ import {
   Img,
   Row,
   Column,
+  ContainerBooking,
+  Booking,
 } from './styles';
 
 export default function Header() {
@@ -41,10 +43,15 @@ export default function Header() {
   return (
     <Container>
       <Top>
-        <Link to="/dashboard">
-          <Logo>Coworking</Logo>
-        </Link>
+        <ContainerBooking>
+          <Link to="/dashboard">
+            <Logo>Coworking</Logo>
+          </Link>
 
+          <Link to="/dashboard/booking-list">
+            <Booking>Reservas</Booking>
+          </Link>
+        </ContainerBooking>
         <GoSignOut size={30} color="#FFF" onClick={e => handleSignUot(e)} />
       </Top>
       <CompanyInfo>
